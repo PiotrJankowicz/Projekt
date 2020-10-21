@@ -1,0 +1,14 @@
+int main() {
+    do{
+        cout << "Podaj numer bazy:"<<endl;
+        cin >> nb;//wprowadzenie numeru bazy
+        znak=0;
+        cout<<"opcja"<<endl;
+        cout<<"1 pobranie danych"<<endl;
+        cout<<"2 zapis danych"<<endl;
+        cout<<"3 wczytanie danych"<<endl;
+        cout<<"4 wyswietlenie danych"<<endl;
+        cout<<"5 usuniecie"<<endl;
+        cout<<"6 wyjscie"<<endl;
+        cin>>znak;//wybor opcji z menu
+        switch(znak){
