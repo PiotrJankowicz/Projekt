@@ -1,6 +1,21 @@
+#include "klasa.h"
 int main() {
-  
-        cout<<"menu"<<endl;
+    char nazwa [10];
+    string line;
+    fstream plik;
+    char znak;
+    class baza** osoba=NULL;
+    int* n = NULL;
+    int t=0, nb=0, nn=0;
+    cout << "Podaj ilosc baz do storzenia:"<<endl;
+    cin >> t;
+    osoba = new baza* [t];
+    n = new int[t];
+    do{
+        cout << "Podaj numer bazy:"<<endl;
+        cin >> nb;
+        znak=0;
+        cout<<"opcja"<<endl;
         cout<<"1 pobranie danych"<<endl;
         cout<<"2 zapis danych"<<endl;
         cout<<"3 wczytanie danych"<<endl;
@@ -9,15 +24,71 @@ int main() {
         cout<<"6 wyjscie"<<endl;
         cin>>znak;
         switch(znak){
-            case '1': 
-                break;
+            case '1':
+
+                cout << "Podaj ilosc osob w bazie:"<<endl;
+                cin >> n[nb-1];
+                osoba[nb-1]= new baza[n[nb-1]];
+                osoba[nb-1]= new baza[n[nb-1]]();
+                for(int i=0;i<n[nb-1];i++){
+                    osoba[nb-1][i].pobierz();
+                }
+                cout<<"Koniec operacji na tej bazie"<<endl<<endl;;
+
+                 break;
             case '2':
+cout << "\nPodaj nazwe pliku:";
+                cin >> nazwa;
+                plik.open(nazwa,ios::app);
+                if(plik.good()==true){
+                    for(int i=0;i<n[nb-1];i++){
+                            osoba[nb-1][i].zapisz(plik);
+                    }
+                } else cout<<"Blad otwarcia pliku\n";
+                cout <<"\n\nDane zapisane\n";
+                plik.close();
+                cout<<"Koniec operacji na tej bazie"<<endl<<endl;;
                 break;
             case '3':
+                 nn=0;
+                cout << "\nPodaj nazwe pliku:";
+                cin >> nazwa;
+  plik.open(nazwa,ios::in);
+                if(plik.good()==true){
+                        while(getline(plik,line)){
+                            nn++;
+                        }
+                } else cout<<"Blad otwarcia pliku\n";
+                plik.close();
+                n[nb-1]=nn/8;
+                cout<<"Liczba osob w zaczytanym pliku: "<<n[nb-1]<<endl<<endl;
+                osoba[nb-1]=new baza[n[nb-1]];
+                plik.open(nazwa,ios::in);
+                if(plik.good()==true){
+                     for(int i=0; i<n[nb-1]; i++){
+                            osoba[nb-1][i].wczytaj(plik);
+                    }
+                }else cout<<"Blad otwarcia pliku\n";
+                plik.close();
                 break;
             case '4':
-                break;
+
+     cout << "\nDane osobowe:\n"<<endl;
+                for(int i=0;i<n[nb-1];i++){
+                    cout << "\tMiejsce "<<i+1<<endl;
+                    osoba[nb-1][i].wyswietl();
+                    cout <<endl<<endl;
+                }
+
+                 break;
             case '5':
+                delete[] osoba[nb-1];
+                cout <<endl<<endl;
                 break;
-            case '6':
-                break;
+          };
+    } while (znak!='6');
+for(int i=0; i<t; i++){
+            delete[] osoba[i];
+    }
+    return 0;
+    }
