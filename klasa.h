@@ -1,20 +1,17 @@
 #include <iostream>
-#include <string.h>
 #include <fstream>
 #include <string>
+#include <limits>
 using namespace std;
 class baza {
 private:
 public:
     string lin;
     fstream plik;
- char imie[15];
- char nazwisko[25];
- char kraj[5];
- char data[15];
+ float wiatr;
  char reakcja[10];
- char wynik[15];
- char miasto[15];
+ float wynik;
+ string miasto ;
  char datawyniku[15];
  void pobierz();
  void wyswietl();
