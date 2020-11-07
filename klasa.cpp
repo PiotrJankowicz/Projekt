@@ -37,7 +37,9 @@ plik>>this->wynik;
 getline(plik,lin);
 plik>>this->datawyniku;
 getline(plik,lin);
-plik>>this->miasto;
+getline(plik,miasto);
+
+
     }
 while(lin!="");
 };
@@ -47,7 +49,7 @@ cout<<"\tSila wiatru: "<<this->wiatr;
 if (wiatr>2)
 cout<<" Srednia predkosc wiatru powyzej 2 m/s. Wynik nie zalicza sie do tabel"<<"\n";
 else cout<<" Regulaminowa srednia predkosc wiatru. Wynik zalicza sie do tabel"<<"\n";
-cout<<"\tCzas reakcji:"<<this->reakcja<< "\n";
+cout<<"\tCzas reakcji: "<<this->reakcja<< "\n";
 cout<<"\tWynik: "<<this->wynik<< "\n";
 cout<<"\tData uzyskania wyniku: "<<this->datawyniku<< "\n";
 cout<<"\tmiasto: "<<this->miasto<< "\n";
