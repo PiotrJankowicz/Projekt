@@ -16,8 +16,6 @@ void baza::pobierz(){
         getline(cin, miasto );
 };
 
-
-
 void baza::zapisz(fstream& plik){
     plik<<endl;
     plik<<this->wiatr<<endl;
@@ -26,6 +24,7 @@ void baza::zapisz(fstream& plik){
     plik<<this->datawyniku<<endl;
     plik<<this->miasto<<endl;
 };
+
 void baza::wczytaj(fstream& plik){
     do{
 getline(plik,lin);
@@ -38,14 +37,12 @@ getline(plik,lin);
 plik>>this->datawyniku;
 getline(plik,lin);
 getline(plik,miasto);
-
-
     }
 while(lin!="");
 };
 
 void baza::wyswietl(){
-cout<<"\tSila wiatru: "<<this->wiatr;
+cout<<"\tSila wiatru: "<<this->wiatr<<" m/s";
 if (wiatr>2)
 cout<<" Srednia predkosc wiatru powyzej 2 m/s. Wynik nie zalicza sie do tabel"<<"\n";
 else cout<<" Regulaminowa srednia predkosc wiatru. Wynik zalicza sie do tabel"<<"\n";
@@ -53,9 +50,13 @@ cout<<"\tCzas reakcji: "<<this->reakcja<< "\n";
 cout<<"\tWynik: "<<this->wynik<< "\n";
 cout<<"\tData uzyskania wyniku: "<<this->datawyniku<< "\n";
 cout<<"\tmiasto: "<<this->miasto<< "\n";
-
 };
 
+float baza::wyszukajwynik(float w){
+if (w==wynik)
+return 1;
+else return 0;
+};
 
 baza::~baza(){
 cout << "Usuwam:\n";
@@ -64,7 +65,5 @@ cout<<"\tCzas reakcji.:"<<this->reakcja<<"\n";
 cout<<"\tWynik.: "<<this->wynik<< "\n";
 cout<<"\tdata uzyskania wyniku.: "<<this->datawyniku<< "\n";
 cout<<"\tmiasto.: "<<this->miasto<< "\n";
-
-
 };
 
