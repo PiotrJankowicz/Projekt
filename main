@@ -21,12 +21,13 @@ int main() {
         cout<<"3 wczytanie danych"<<endl;
         cout<<"4 wyswietlenie danych"<<endl;
         cout<<"5 usuniecie"<<endl;
-        cout<<"6 wyjscie"<<endl;
+        cout<<"6 wyszukaj wynik"<<endl;
+        cout<<"7 koniec"<<endl;
         cin>>znak;
         switch(znak){
             case '1':
 
-                cout << "Podaj ilosc osob w bazie:"<<endl;
+                cout << "Podaj ilosc wynikow w bazie:"<<endl;
                 cin >> n[nb-1];
                 osoba[nb-1]= new baza[n[nb-1]];
                 osoba[nb-1]= new baza[n[nb-1]]();
@@ -60,8 +61,8 @@ cout << "\nPodaj nazwe pliku:";
                         }
                 } else cout<<"Blad otwarcia pliku\n";
                 plik.close();
-                n[nb-1]=nn/8;
-                cout<<"Liczba osob w zaczytanym pliku: "<<n[nb-1]<<endl<<endl;
+                n[nb-1]=nn/5;
+                cout<<"Liczba wynikow w zaczytanym pliku: "<<n[nb-1]<<endl<<endl;
                 osoba[nb-1]=new baza[n[nb-1]];
                 plik.open(nazwa,ios::in);
                 if(plik.good()==true){
@@ -73,9 +74,9 @@ cout << "\nPodaj nazwe pliku:";
                 break;
             case '4':
 
-     cout << "\nDane osobowe:\n"<<endl;
+     cout << "\nRezultaty startow:\n"<<endl;
                 for(int i=0;i<n[nb-1];i++){
-                    cout << "\tMiejsce "<<i+1<<endl;
+                    cout << "\tStart nr "<<i+1<<endl;
                     osoba[nb-1][i].wyswietl();
                     cout <<endl<<endl;
                 }
@@ -85,10 +86,27 @@ cout << "\nPodaj nazwe pliku:";
                 delete[] osoba[nb-1];
                 cout <<endl<<endl;
                 break;
-          };
-    } while (znak!='6');
+
+            case '6':
+                 cout << "\nPodaj wynik:\n"<<endl;
+                 float w;
+                 cin>>w;
+                for(int i=0;i<n[nb-1];i++){
+                    if (osoba[nb-1][i].wyszukajwynik(w)==1){
+                        cout << "\tStart nr "<<i+1<<endl;
+                        osoba[nb-1][i].wyswietl();
+                        cout <<endl<<endl;
+                    }
+
+
+                }
+
+                 break;
+                 };
+    } while (znak!='7');
 for(int i=0; i<t; i++){
             delete[] osoba[i];
     }
     return 0;
     }
+
